@@ -1,0 +1,27 @@
+[General]
+ActionAlt=2
+ActionCtrl=1
+ActionMeta=0
+NumberOfProposals=6
+alfred_note_shown=true
+alwaysOnTop=true
+clearOnHide=false
+displayIcons=true
+displayScrollbar=false
+displayShadow=false
+hideOnClose=false
+hideOnFocusLoss=false
+hotkey=Meta+D
+itemCount=5
+maxHistory=32
+showCentered=true
+showTray=true
+terminal=xterm -e
+theme=Spotlight Dark
+
+[org.albert.extension.files]
+enabled=true
+fuzzy=true
+
+[org.albert.extension.ssh]
+enabled=false
