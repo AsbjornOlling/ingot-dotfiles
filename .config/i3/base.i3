@@ -172,13 +172,14 @@ bindsym $mod+o exec ~/Scripts/switch.sh dark
 bindsym $mod+i exec ~/Scripts/switch.sh light
 
 # Startup applications
-exec --no-startup-id ~/Scripts/switch.sh light
+# exec --no-startup-id ~/Scripts/switch.sh light
 exec --no-startup-id compton -f
-exec xbindkeys
-exec nohup albert &
-exec nohup nextcloud &
-exec nohup twmnd &
+exec --no-startup-id xbindkeys
+exec --no-startup-id albert
+exec --no-startup-id twmnd
+exec --no-startup-id syncthing -no-browser
 exec ~/Scripts/trackpad.sh
+#exec --no-startup-id nextcloud
 exec --no-startup-id i3-msg 'workspace 1 ;; exec firefox'
-exec --no-startup-id i3-msg 'workspace 2 ;  exec termite'
-exec --no-stratup-id i3-msg 'workspace 3 ; exec messengerfordesktop'
+#exec --no-startup-id i3-msg 'workspace 2 ;  exec termite'
+#exec --no-stratup-id i3-msg 'workspace 3 ; exec messengerfordesktop'
