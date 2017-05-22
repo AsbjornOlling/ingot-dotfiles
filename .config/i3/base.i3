@@ -100,26 +100,26 @@ bindsym $mod+1 workspace 1 
 bindsym $mod+2 workspace 2 
 bindsym $mod+3 workspace 3 
 #bindsym $mod+3 workspace 
-bindsym $mod+4 workspace IV
-bindsym $mod+5 workspace V
-bindsym $mod+6 workspace VI
-bindsym $mod+7 workspace VII
-bindsym $mod+8 workspace VIII
-bindsym $mod+9 workspace IV
-bindsym $mod+0 workspace X
+bindsym $mod+4 workspace 4
+bindsym $mod+5 workspace 5
+bindsym $mod+6 workspace 6
+bindsym $mod+7 workspace 7
+bindsym $mod+8 workspace 8
+bindsym $mod+9 workspace 9
+bindsym $mod+0 workspace 10 
 
 # move focused container to workspace
 #bindsym $mod+Shift+1 move container to workspace 
 bindsym $mod+Shift+1 move container to workspace 1 
 bindsym $mod+Shift+2 move container to workspace 2 
 bindsym $mod+Shift+3 move container to workspace 3 
-bindsym $mod+Shift+4 move container to workspace IV
-bindsym $mod+Shift+5 move container to workspace V
-bindsym $mod+Shift+6 move container to workspace VI
-bindsym $mod+Shift+7 move container to workspace VII
-bindsym $mod+Shift+8 move container to workspace VIII
-bindsym $mod+Shift+9 move container to workspace IV
-bindsym $mod+Shift+0 move container to workspace X
+bindsym $mod+Shift+4 move container to workspace 4
+bindsym $mod+Shift+5 move container to workspace 5
+bindsym $mod+Shift+6 move container to workspace 6
+bindsym $mod+Shift+7 move container to workspace 7
+bindsym $mod+Shift+8 move container to workspace 8
+bindsym $mod+Shift+9 move container to workspace 9
+bindsym $mod+Shift+0 move container to workspace 10 
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -169,7 +169,9 @@ exec setxkbmap dk -option caps:super
 
 # Switch between light and dark themes
 bindsym $mod+o exec ~/Scripts/switch.sh dark
+bindsym $mod+Shift+o exec ~/Scripts/switch.sh dark force
 bindsym $mod+i exec ~/Scripts/switch.sh light
+bindsym $mod+Shift+i exec ~/Scripts/switch.sh light force
 
 # Startup applications
 # exec --no-startup-id ~/Scripts/switch.sh light

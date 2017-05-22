@@ -1,6 +1,7 @@
 #!/bin/bash
 
 SCHEME=$1
+ARG2=$2
 
 I3BLOCKS_HEADER=~/.config/i3/blocks/header.i3blocks
 I3BLOCKS_BASE=~/.config/i3/blocks/base.i3blocks
@@ -25,6 +26,10 @@ ALBERT_LIGHT=~/.config/.light.albert
 ALBERT_DARK=~/.config/.dark.albert
 ALBERT_FINAL=~/.config/albert.conf
 
+HOMEPAGE_LIGHT=~/.config/softgoogle/light.css
+HOMEPAGE_DARK=~/.config/softgoogle/dark.css
+HOMEPAGE_FINAL=~/.config/softgoogle/style.css
+
 FIREFOX_LIGHT=~/.mozilla/firefox/2yvzr5eu.default/stylish.light
 FIREFOX_DARK=~/.mozilla/firefox/2yvzr5eu.default/stylish.dark
 FIREFOX_FINAL=~/.mozilla/firefox/2yvzr5eu.default/stylish.sqlite
@@ -34,9 +39,6 @@ GTK_LIGHT=~/.config/gtk-3.0/light.gtk3
 GTK_DARK=~/.config/gtk-3.0/dark.gtk3
 GTK_FINAL=~/.config/gtk-3.0/settings.ini
 
-HOMEPAGE_LIGHT=~/.config/softgoogle/light.css
-HOMEPAGE_DARK=~/.config/softgoogle/dark.css
-HOMEPAGE_FINAL=~/.config/softgoogle/style.css
 
 if [[ "$SCHEME" == "light" ]]; then
 	echo "Switching to light theme..."
@@ -86,13 +88,27 @@ if [[ "$SCHEME" == "light" ]]; then
 		echo "Albert light theme is missing!"
 	fi
 
+	#Homepage css, replaces style.css
+	if [[ -f "$HOMEPAGE_LIGHT" ]]; then
+	       echo "Switching homepage scheme."
+	       cp "$HOMEPAGE_LIGHT" "$HOMEPAGE_FINAL"
+	else
+	       echo "Some homepage files are missing!"
+	fi
+
 	#Firefox, replaces Stylish.sqlite database. DOESNT restart firefox.
 	if [[ -f "$FIREFOX_LIGHT" ]]; then
 	       echo "Switching firefox scheme."
 	       cp "$FIREFOX_LIGHT" "$FIREFOX_FINAL"
+				 if [[ "$ARG2" == "force" ]]; then
+                killall firefox && firefox
+				 fi 
 	else
 	       echo "Some firefox files are missing!"
 	fi
+
+elif [[ "$SCHEME" == "dark" ]]; then
+	echo "Switching to dark theme..."
 
 	#GTK, merges color with main config
 	if [[ -f "$GTK_BASE" ]] && [[ -f "$GTK_LIGHT" ]]; then
@@ -103,18 +119,6 @@ if [[ "$SCHEME" == "light" ]]; then
 	       echo "Some gtk files are missing!"
 	fi
 
-	#Homepage css, replaces style.css
-	if [[ -f "$HOMEPAGE_LIGHT" ]]; then
-	       echo "Switching homepage scheme."
-	       cp "$HOMEPAGE_LIGHT" "$HOMEPAGE_FINAL"
-	else
-	       echo "Some homepage files are missing!"
-	fi
-
-fi
-
-if [[ "$SCHEME" == "dark" ]]; then
-	echo "Switching to dark theme..."
 
 	#Sets wallpaper
 	echo "Setting wallpaper."
@@ -159,10 +163,21 @@ if [[ "$SCHEME" == "dark" ]]; then
 		echo "Albert dark theme is missing"
 	fi
 
-	#Firefox, replaces Stylish.sqlite database. DOESNT restart firefox.
+	#Homepage css, replaces style.css
+	if [[ -f "$HOMEPAGE_DARK" ]]; then
+	       echo "Switching homepage scheme."
+	       cp "$HOMEPAGE_DARK" "$HOMEPAGE_FINAL"
+	else
+	       echo "Some homepage files are missing!"
+	fi
+
+	#Firefox, replaces Stylish.sqlite database. Includes force option
 	if [[ -f "$FIREFOX_DARK" ]]; then
 	       echo "Switching firefox scheme."
 	       cp "$FIREFOX_DARK" "$FIREFOX_FINAL"
+				 if [[ "$ARG2" == "force" ]]; then
+                killall firefox && firefox
+				 fi 
 	else
 	       echo "Some firefox files are missing!"
 	fi
@@ -176,11 +191,6 @@ if [[ "$SCHEME" == "dark" ]]; then
 	       echo "Some gtk files are missing!"
 	fi
 
-	#Homepage css, replaces style.css
-	if [[ -f "$HOMEPAGE_DARK" ]]; then
-	       echo "Switching homepage scheme."
-	       cp "$HOMEPAGE_DARK" "$HOMEPAGE_FINAL"
-	else
-	       echo "Some homepage files are missing!"
-	fi
+else
+				 echo "Error. Usage: switch.sh (light/dark) [force.]"
 fi

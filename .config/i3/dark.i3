@@ -17,7 +17,6 @@ client.urgent           $urgent-bg-color    $urgent-bg-color   $text-color      
 # finds out, if available)
 bar {
 	position top
-        # status_command i3status
         status_command i3blocks -c ~/.config/i3/blocks/i3blocks.conf
         tray_output none
 	font pango:xos4 Terminus 12px
