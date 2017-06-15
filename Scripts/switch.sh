@@ -45,7 +45,7 @@ if [[ "$SCHEME" == "light" ]]; then
 
 	#Sets wallpaper
 	#Setting wallpaper
-	feh --bg-tile ~/Pictures/wp_light.jpg
+	feh --bg-fill ~/Pictures/wp_light.jpg
 
 	#i3blocks, makes a single file by appending several files to the header.
 	if [[ -f "$I3BLOCKS_HEADER" ]]; then

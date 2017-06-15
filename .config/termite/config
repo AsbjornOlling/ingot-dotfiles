@@ -1,12 +1,11 @@
 [options]
 font = xos4 Terminus 12px
 [colors]
-
 # special
-foreground      = #c7ccd1
-foreground_bold = #c7ccd1
-cursor          = #c7ccd1
-background      = #1c2023
+foreground      = #565e65
+foreground_bold = #565e65
+cursor          = #565e65
+background      = #f3f4f5
 
 # black
 color0  = #1c2023
